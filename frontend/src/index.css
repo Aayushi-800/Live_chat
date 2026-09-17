@@ -1,0 +1,284 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: all;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-base-content) 25%, transparent);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--color-base-content) 45%, transparent);
+}
+
+/* WhatsApp Pattern Chat Background */
+.wa-chat-bg {
+    background-color: var(--color-base-100) !important;
+    background-image: radial-gradient(circle at 12px 12px, color-mix(in srgb, var(--color-base-content) 6%, transparent) 1.5px, transparent 0) !important;
+    background-size: 24px 24px !important;
+}
+
+/* ============================================================
+   Stream Chat - Theme & UI Overrides for DaisyUI 5
+   ============================================================ */
+
+.str-chat {
+    height: 100%;
+    background: transparent !important;
+    background-color: transparent !important;
+    font-family: inherit !important;
+    --str-chat__background-color: var(--color-base-100);
+    --str-chat__secondary-background-color: var(--color-base-200);
+    --str-chat__surface-color: var(--color-base-200);
+    --str-chat__secondary-surface-color: var(--color-base-300);
+    --str-chat__tertiary-surface-color: var(--color-base-200);
+    --str-chat__primary-surface-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+    --str-chat__primary-color: var(--color-primary);
+    --str-chat__on-primary-color: var(--color-primary-content);
+    --str-chat__text-color: var(--color-base-content);
+    --str-chat__text-low-emphasis-color: color-mix(in srgb, var(--color-base-content) 65%, transparent);
+    --str-chat__border-color: var(--color-base-300);
+    --str-chat__message-list-background-color: transparent;
+    --str-chat__message-list-color: var(--color-base-content);
+    --str-chat__message-textarea-background-color: var(--color-base-100);
+    --str-chat__message-textarea-color: var(--color-base-content);
+    --str-chat__message-input-background-color: var(--color-base-200);
+}
+
+.str-chat,
+.str-chat__channel,
+.str-chat__container,
+.str-chat__main-panel,
+.str-chat__window,
+.str-chat__list,
+.str-chat__virtual-list {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--color-base-content) !important;
+}
+
+.str-chat__channel,
+.str-chat__main-panel,
+.str-chat__thread,
+.str-chat__thread .str-chat__list,
+.str-chat__window {
+    height: 100%;
+}
+
+.str-chat__main-panel {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.str-chat__window {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    flex-direction: column;
+}
+
+.str-chat__container,
+.str-chat__channel {
+    width: 100%;
+}
+
+.str-chat__list-notifications {
+    display: none !important;
+}
+
+.str-chat__channel-header {
+    display: none !important;
+}
+
+.str-chat__list {
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 1rem 1.25rem !important;
+}
+
+/* Date separator */
+.str-chat__date-separator {
+    padding: 1rem 0 !important;
+}
+
+.str-chat__date-separator-line {
+    background-color: color-mix(in srgb, var(--color-base-content) 15%, transparent) !important;
+    border-color: color-mix(in srgb, var(--color-base-content) 15%, transparent) !important;
+}
+
+.str-chat__date-separator-date {
+    background: var(--color-base-200) !important;
+    color: color-mix(in srgb, var(--color-base-content) 75%, transparent) !important;
+    border: 1px solid var(--color-base-300) !important;
+    border-radius: 9999px !important;
+    padding: 0.25rem 0.75rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Message bubbles */
+.str-chat__message .str-chat__message-bubble {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Ensure inner text wrappers have NO background, border, or shadow */
+.str-chat__message .str-chat__message-text,
+.str-chat__message .str-chat__message-text-inner,
+.str-chat__message .str-chat__message-simple-text-inner {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* Outgoing Message (Me) */
+.str-chat__message.str-chat__message--me .str-chat__message-bubble,
+.str-chat__message--me .str-chat__message-bubble {
+    background-color: var(--color-primary) !important;
+    color: var(--color-primary-content) !important;
+    border: none !important;
+    border-radius: 14px 14px 2px 14px !important;
+    padding: 0.5rem 0.85rem !important;
+}
+
+.str-chat__message--me .str-chat__message-bubble,
+.str-chat__message--me .str-chat__message-bubble * {
+    color: var(--color-primary-content) !important;
+}
+
+/* Incoming Message (Other) */
+.str-chat__message:not(.str-chat__message--me) .str-chat__message-bubble,
+.str-chat__message--other .str-chat__message-bubble {
+    background-color: var(--color-base-200) !important;
+    color: var(--color-base-content) !important;
+    border: 1px solid var(--color-base-300) !important;
+    border-radius: 14px 14px 14px 2px !important;
+    padding: 0.5rem 0.85rem !important;
+}
+
+.str-chat__message:not(.str-chat__message--me) .str-chat__message-bubble,
+.str-chat__message:not(.str-chat__message--me) .str-chat__message-bubble * {
+    color: var(--color-base-content) !important;
+}
+
+/* Message Metadata (Timestamp & Sender Name) */
+.str-chat__message-metadata {
+    color: color-mix(in srgb, var(--color-base-content) 60%, transparent) !important;
+    font-size: 0.6875rem !important;
+    margin-top: 2px !important;
+}
+
+.str-chat__message-simple-name {
+    color: var(--color-primary) !important;
+    font-size: 0.6875rem !important;
+    font-weight: 600 !important;
+    margin-right: 0.35rem !important;
+}
+
+.str-chat__message-simple-timestamp {
+    color: color-mix(in srgb, var(--color-base-content) 55%, transparent) !important;
+    font-size: 0.6875rem !important;
+}
+
+.str-chat__message-simple-status {
+    display: none !important;
+}
+
+/* ============================================================
+   Bottom Message Input Toolbar & Type Box
+   ============================================================ */
+
+.str-chat__message-input {
+    background: var(--color-base-200) !important;
+    background-color: var(--color-base-200) !important;
+    border-top: 1px solid var(--color-base-300) !important;
+    padding: 0.6rem 1rem !important;
+}
+
+/* Inner Pill Box */
+.str-chat__message-input-inner {
+    background: var(--color-base-100) !important;
+    background-color: var(--color-base-100) !important;
+    border: 1px solid var(--color-base-300) !important;
+    border-radius: 24px !important;
+    padding: 0.35rem 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.str-chat__message-input-inner:focus-within {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 1px var(--color-primary) !important;
+}
+
+.str-chat__message-textarea-container,
+.str-chat__message-textarea-with-emoji-picker,
+.str-chat__textarea,
+.rta {
+    background: transparent !important;
+    background-color: transparent !important;
+    width: 100% !important;
+}
+
+.str-chat__textarea__textarea,
+textarea.rta__textarea,
+.str-chat__message-input textarea {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--color-base-content) !important;
+    font-size: 0.9375rem !important;
+    line-height: 1.4 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    resize: none !important;
+}
+
+.str-chat__textarea__textarea::placeholder,
+textarea.rta__textarea::placeholder,
+.str-chat__message-input textarea::placeholder {
+    color: color-mix(in srgb, var(--color-base-content) 45%, transparent) !important;
+}
+
+/* Icons inside input bar (Emoji, File, Send) */
+.str-chat__send-button,
+.str-chat__file-input-container,
+.str-chat__emoji-picker-button,
+.str-chat__message-input button {
+    background: transparent !important;
+    border: none !important;
+    color: color-mix(in srgb, var(--color-base-content) 60%, transparent) !important;
+    cursor: pointer !important;
+    transition: color 0.15s ease !important;
+}
+
+.str-chat__send-button:hover,
+.str-chat__file-input-container:hover,
+.str-chat__emoji-picker-button:hover,
+.str-chat__message-input button:hover {
+    color: var(--color-primary) !important;
+}
+
+.str-chat__send-button svg path,
+.str-chat__message-input button svg path {
+    fill: currentColor !important;
+}
+
+/* Empty Channel */
+.str-chat__empty-channel {
+    background: transparent !important;
+    color: var(--color-base-content) !important;
+}
