@@ -13,6 +13,10 @@ This project is divided into two applications:
 
 The application is designed around language-learning style social matching, where users complete their profile, discover other users, connect with them, and communicate through real-time chat and video calls.
 
+## 🚀 Live Demo
+
+🔗 **Live Application:** https://live-chat-frontend-iota.vercel.app/
+
 ## Features
 
 ### Authentication
@@ -128,6 +132,7 @@ The application is designed around language-learning style social matching, wher
 
 ```text
 Live_chat/
+
 ├── backend/
 │   ├── api/
 │   │   └── index.js
@@ -151,7 +156,8 @@ Live_chat/
 │   │   ├── pages/
 │   │   └── store/
 │   ├── .env.example
-│   └── package.json
+│   ├── package.json
+│   └── vercel.json
 │
 ├── screenshots/
 │   ├── login.png
@@ -178,17 +184,23 @@ Create a `.env` file inside the `backend/` folder:
 
 ```env
 PORT=3000
+
 MONGO_URI=your_mongodb_connection_string
+
 JWT_SECRET_KEY=your_jwt_secret
 
 STREAM_API_KEY=your_stream_api_key
+
 STREAM_API_SECRET=your_stream_api_secret
 
 CLIENT_URL=http://localhost:5173
 
 ADMIN_EMAIL=admin@example.com
+
 ADMIN_PASSWORD=your_admin_password
+
 ADMIN_FULL_NAME=Admin
+
 ADMIN_USERNAME=admin
 ```
 
@@ -198,6 +210,7 @@ Create a `.env` file inside the `frontend/` folder:
 
 ```env
 VITE_STREAM_API_KEY=your_stream_api_key
+
 VITE_API_URL=http://localhost:3000
 ```
 
@@ -279,6 +292,12 @@ npm run dev
 
 Starts the backend server with file watching.
 
+```bash
+npm start
+```
+
+Starts the backend server in production mode.
+
 ### Frontend
 
 ```bash
@@ -307,42 +326,43 @@ Runs ESLint.
 
 ## Deployment
 
-The project is structured for separate frontend and backend deployments.
+The project uses separate deployments for the frontend and backend.
 
 ### Frontend
 
-The frontend can be deployed as a Vite application on a hosting platform such as Vercel.
+The frontend is deployed on Vercel as a Vite application.
 
-Set:
+Production environment variables:
 
 ```env
 VITE_STREAM_API_KEY=your_stream_api_key
+
 VITE_API_URL=https://your-backend-domain
 ```
 
 ### Backend
 
-The backend includes:
-
-```text
-backend/api/index.js
-backend/vercel.json
-```
-
-which can be used for serverless deployment.
+The backend is deployed on Render.
 
 Production environment variables should include:
 
 ```env
 MONGO_URI=your_mongodb_connection_string
+
 JWT_SECRET_KEY=your_jwt_secret
+
 STREAM_API_KEY=your_stream_api_key
+
 STREAM_API_SECRET=your_stream_api_secret
+
 CLIENT_URL=https://your-frontend-domain
 
 ADMIN_EMAIL=admin@example.com
+
 ADMIN_PASSWORD=your_admin_password
+
 ADMIN_FULL_NAME=Admin
+
 ADMIN_USERNAME=admin
 
 NODE_ENV=production
