@@ -1,94 +1,189 @@
 # Live Chat Application
 
-A full-stack real-time chat platform built with React, Vite, Node.js, Express, MongoDB, and Stream. The project supports user authentication, profile onboarding, friend discovery, direct messaging, video calling, blocking/reporting, and an admin panel for user moderation.
+A full-stack real-time chat platform built with **React, Vite, Node.js, Express, MongoDB, and Stream**.
+
+The application allows users to create profiles, discover people, send friend requests, chat in real time, make video calls, manage blocked users, and report users. It also includes an admin panel for user management and report review.
 
 ## Overview
 
-This project is split into two applications:
+This project is divided into two applications:
 
-- `frontend/` contains the React client built with Vite, Tailwind CSS, DaisyUI, React Query, and Zustand.
-- `backend/` contains the Express API, MongoDB models, authentication logic, Stream integration, and admin endpoints.
+* `frontend/` — React client built with Vite
+* `backend/` — Express API with MongoDB, authentication, and Stream integration
 
-The app is designed around language-learning style social matching, where users complete a profile, connect with other users, and start one-to-one conversations.
+The application is designed around language-learning style social matching, where users complete their profile, discover other users, connect with them, and communicate through real-time chat and video calls.
 
 ## Features
 
-- User signup, login, logout, and password reset
-- JWT-based authentication using secure HTTP-only cookies
-- Profile onboarding with avatar, bio, languages, and location
-- Friend discovery with username search
-- Send, accept, and reject friend requests
-- Real-time one-to-one chat with Stream Chat
-- Video call links and in-app calling with Stream Video
-- Block and unblock users
-- Report users for moderation
-- Admin dashboard to:
-  - view all users
-  - activate or deactivate non-admin accounts
-  - review submitted reports
-- Automatic admin account seeding from environment variables
+### Authentication
+
+* User signup and login
+* Logout
+* Forgot/reset password
+* JWT-based authentication
+* Secure HTTP-only authentication cookies
+
+### User Profile & Discovery
+
+* Profile onboarding
+* Avatar, bio, languages, and location
+* Discover other users
+* Search users by username
+* Send friend requests
+* Accept or reject friend requests
+
+### Real-Time Communication
+
+* One-to-one real-time messaging
+* Stream Chat integration
+* Video calling with Stream Video
+* Call interface
+
+### User Safety
+
+* Block users
+* Unblock users
+* Report users
+* View blocked users
+* Friend request notifications
+
+### Customization
+
+* Multiple theme options
+* Theme selection interface
+
+### Admin Panel
+
+* Admin dashboard
+* View registered users
+* Activate/deactivate user accounts
+* View submitted reports
+* Admin account automatically seeded from environment variables
+
+## Screenshots
+
+### Authentication
+
+![Login](screenshots/login.png)
+
+![Signup](screenshots/signup.png)
+
+### User Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+![Discover People](screenshots/livechatdiscoverpeople.png)
+
+### Chat & Communication
+
+![Inbox](screenshots/inbox.png)
+
+![Video Call](screenshots/call.png)
+
+### Notifications & Safety
+
+![Notifications](screenshots/notifications.png)
+
+![Blocked Users](screenshots/blocked-users.png)
+
+### Theme Customization
+
+![Change Theme](screenshots/change-theme.png)
+
+### Admin Panel
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+![View Reports](screenshots/view-reports.png)
 
 ## Tech Stack
 
 ### Frontend
 
-- React 19
-- Vite
-- Tailwind CSS 4
-- DaisyUI
-- TanStack React Query
-- React Router
-- Zustand
-- Axios
-- Stream Chat React SDK
-- Stream Video React SDK
+* React 19
+* Vite
+* Tailwind CSS
+* DaisyUI
+* TanStack React Query
+* React Router
+* Zustand
+* Axios
+* Stream Chat React SDK
+* Stream Video React SDK
 
 ### Backend
 
-- Node.js
-- Express 5
-- MongoDB with Mongoose
-- JWT
-- bcryptjs
-- cookie-parser
-- cors
-- dotenv
-- Stream Chat SDK
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+* JWT
+* bcryptjs
+* cookie-parser
+* CORS
+* dotenv
+* Stream Chat SDK
 
 ## Project Structure
 
 ```text
-10. Live chat/
-|-- backend/
-|   |-- src/
-|   |   |-- controllers/
-|   |   |-- lib/
-|   |   |-- models/
-|   |   |-- routes/
-|   |   `-- server.js
-|   `-- package.json
-|-- frontend/
-|   |-- public/
-|   |-- src/
-|   |   |-- admin/
-|   |   |-- components/
-|   |   |-- hooks/
-|   |   |-- lib/
-|   |   `-- pages/
-|   `-- package.json
-`-- README.md
+Live_chat/
+├── backend/
+│   ├── api/
+│   │   └── index.js
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── lib/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── server.js
+│   ├── .env.example
+│   ├── package.json
+│   └── vercel.json
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── admin/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── lib/
+│   │   ├── pages/
+│   │   └── store/
+│   ├── .env.example
+│   └── package.json
+│
+├── screenshots/
+│   ├── login.png
+│   ├── signup.png
+│   ├── dashboard.png
+│   ├── livechatdiscoverpeople.png
+│   ├── inbox.png
+│   ├── call.png
+│   ├── notifications.png
+│   ├── blocked-users.png
+│   ├── change-theme.png
+│   ├── admin-dashboard.png
+│   └── view-reports.png
+│
+├── .gitignore
+└── README.md
 ```
 
 ## Environment Variables
 
-Create a `.env` file inside `backend/` with the following values:
+### Backend
+
+Create a `.env` file inside the `backend/` folder:
 
 ```env
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET_KEY=your_jwt_secret
+
 STREAM_API_KEY=your_stream_api_key
 STREAM_API_SECRET=your_stream_api_secret
+
 CLIENT_URL=http://localhost:5173
 
 ADMIN_EMAIL=admin@example.com
@@ -97,69 +192,146 @@ ADMIN_FULL_NAME=Admin
 ADMIN_USERNAME=admin
 ```
 
-Create a `.env` file inside `frontend/` with:
+### Frontend
+
+Create a `.env` file inside the `frontend/` folder:
 
 ```env
 VITE_STREAM_API_KEY=your_stream_api_key
 VITE_API_URL=http://localhost:3000
 ```
 
+> Never commit real `.env` files, API keys, passwords, or secrets to GitHub.
+
 ## Installation
 
-Install dependencies for both apps:
+Clone the repository:
+
+```bash
+git clone https://github.com/Aayushi-800/Live_chat.git
+cd Live_chat
+```
+
+### Backend
 
 ```bash
 cd backend
 npm install
 ```
 
+### Frontend
+
+Open a second terminal:
+
 ```bash
 cd frontend
 npm install
 ```
 
-## Running The Project
+## Running the Project
 
-Start the backend first:
+### Start Backend
 
 ```bash
 cd backend
 npm run dev
 ```
 
-Start the frontend in a second terminal:
+Backend runs on:
+
+```text
+http://localhost:3000
+```
+
+### Start Frontend
+
+Open another terminal:
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-Default local URLs:
+Frontend runs on:
 
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:3000`
+```text
+http://localhost:5173
+```
 
-## Deployment Notes
+## Admin Access
 
-This project is now prepared for separate frontend and backend deployments.
+The backend automatically creates or updates an admin account using the following environment variables:
 
-### Frontend on Vercel
+* `ADMIN_EMAIL`
+* `ADMIN_PASSWORD`
+* `ADMIN_FULL_NAME`
+* `ADMIN_USERNAME`
 
-Set these environment variables in the frontend project:
+After logging in with the admin account, the admin can access the admin panel to manage users and review reports.
+
+## Available Scripts
+
+### Backend
+
+```bash
+npm run dev
+```
+
+Starts the backend server with file watching.
+
+### Frontend
+
+```bash
+npm run dev
+```
+
+Starts the Vite development server.
+
+```bash
+npm run build
+```
+
+Creates a production build.
+
+```bash
+npm run preview
+```
+
+Previews the production build locally.
+
+```bash
+npm run lint
+```
+
+Runs ESLint.
+
+## Deployment
+
+The project is structured for separate frontend and backend deployments.
+
+### Frontend
+
+The frontend can be deployed as a Vite application on a hosting platform such as Vercel.
+
+Set:
 
 ```env
 VITE_STREAM_API_KEY=your_stream_api_key
 VITE_API_URL=https://your-backend-domain
 ```
 
-### Backend on Vercel
+### Backend
 
-Deploy the `backend/` folder as its own Vercel project. The repository now includes:
+The backend includes:
 
-- `backend/api/index.js` as the serverless entry point
-- `backend/vercel.json` to route requests to the Express app
+```text
+backend/api/index.js
+backend/vercel.json
+```
 
-Set these backend environment variables in Vercel:
+which can be used for serverless deployment.
+
+Production environment variables should include:
 
 ```env
 MONGO_URI=your_mongodb_connection_string
@@ -172,100 +344,55 @@ ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=your_admin_password
 ADMIN_FULL_NAME=Admin
 ADMIN_USERNAME=admin
+
 NODE_ENV=production
 ```
 
-If you want to allow multiple frontend domains, use:
+## API Overview
 
-```env
-CLIENT_URLS=https://your-frontend-domain,https://your-preview-domain
-```
+### Authentication
 
-For Vercel preview deployments, the backend also supports suffix-based origin matching. By default it allows secure origins ending in `vercel.app`, and you can override that with:
+* `POST /api/auth/signup`
+* `POST /api/auth/login`
+* `POST /api/auth/logout`
+* `POST /api/auth/forgot-password`
+* `POST /api/auth/onboarding`
+* `GET /api/auth/me`
 
-```env
-CLIENT_VERCEL_PREVIEW_SUFFIXES=vercel.app
-```
+### Users
 
-## Admin Access
-
-When the backend connects to MongoDB, it automatically seeds or syncs an admin account using:
-
-- `ADMIN_EMAIL`
-- `ADMIN_PASSWORD`
-- `ADMIN_FULL_NAME`
-- `ADMIN_USERNAME`
-
-After signing in with that account, the app redirects the admin user to:
-
-`/admin/manage-users`
-
-From there, the admin can manage user activation status and review submitted reports.
-
-## Available Scripts
-
-### Backend
-
-- `npm run dev` starts the backend with file watching
-
-### Frontend
-
-- `npm run dev` starts the Vite development server
-- `npm run build` creates a production build
-- `npm run preview` previews the production build locally
-- `npm run lint` runs ESLint
-
-## API Summary
-
-### Auth
-
-- `POST /api/auth/signup`
-- `POST /api/auth/login`
-- `POST /api/auth/logout`
-- `POST /api/auth/forgot-password`
-- `POST /api/auth/onboarding`
-- `GET /api/auth/me`
-
-### User
-
-- `GET /api/user`
-- `GET /api/user/friends`
-- `GET /api/user/blocked-users`
-- `GET /api/user/friend-requests`
-- `GET /api/user/outgoing-friend-requests`
-- `POST /api/user/friend-request/:id`
-- `PUT /api/user/accept-friend-request/:id`
-- `PUT /api/user/reject-friend-request/:id`
-- `POST /api/user/block/:id`
-- `POST /api/user/unblock/:id`
-- `POST /api/user/report/:id`
+* `GET /api/user`
+* `GET /api/user/friends`
+* `GET /api/user/blocked-users`
+* `GET /api/user/friend-requests`
+* `GET /api/user/outgoing-friend-requests`
+* `POST /api/user/friend-request/:id`
+* `PUT /api/user/accept-friend-request/:id`
+* `PUT /api/user/reject-friend-request/:id`
+* `POST /api/user/block/:id`
+* `POST /api/user/unblock/:id`
+* `POST /api/user/report/:id`
 
 ### Chat
 
-- `GET /api/chat/token`
+* `GET /api/chat/token`
 
 ### Admin
 
-- `GET /api/admin/users`
-- `PATCH /api/admin/users/:id/active`
-- `GET /api/admin/reports`
-
-## Notes
-
-- The frontend now normalizes the API base URL and appends `/api` automatically.
-- The backend CORS configuration now supports environment-based frontend origins.
-- Production auth cookies are configured for cross-site frontend/backend deployments.
-- Stream credentials are required for chat and video calling features.
-- There are currently no automated tests configured in this repository.
+* `GET /api/admin/users`
+* `PATCH /api/admin/users/:id/active`
+* `GET /api/admin/reports`
 
 ## Future Improvements
 
-- Add automated tests for frontend and backend flows
-- Add deployment instructions for production
-- Add pagination and filters in the admin dashboard
-- Add online presence and typing indicators
-- Add report status updates and moderation actions
+* Add automated tests
+* Add online presence indicators
+* Add typing indicators
+* Add pagination and filtering
+* Add report status management
+* Improve moderation features
+* Add more communication features
 
 ## License
 
-This project is currently unlicensed unless you choose to add a license file.
+This project is currently unlicensed.
